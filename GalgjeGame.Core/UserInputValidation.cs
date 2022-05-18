@@ -1,38 +1,32 @@
 ﻿using GalgjeGame;
+using GalgjeGame.Core.Entities;
 using System.Text.RegularExpressions;
 
 namespace GalgjeGame.Core
 {
     public class UserInputValidation //: IInputValidator
     {
-        public ValidationResultUIV VerifyChosenLetter(string userInput, UserGameScore user)
+        public void VerifyChosenLetter(char letter, Game game)
         {
-            string userGuess = userInput.Trim().ToLower();
-
-            if (user.guessedLetters.Contains(userGuess))
+            if (game.ChosenLetters.Contains(letter))
             {
-                return ValidationResultUIV.LetterAlreadyChosenError;
+                throw new ArgumentException("Letter was already chosen before");
             }
-            else if (!Regex.IsMatch(userGuess, @"^[a-z]+$"))
+            else if (!Char.IsLetter(letter))
             {
-                return ValidationResultUIV.OnlyLettersError;
+                throw new InvalidDataException("You can only choose letters!");
             }
-            else if (userGuess.Length > 1)
+            else if (Char.IsWhiteSpace(letter))
             {
-                return ValidationResultUIV.MoreThan1LetterError;
+                throw new InvalidDataException("Cannot insert empty request!");
             }
-            user.guessedLetters.Add(userGuess);
-            return ValidationResultUIV.Success;
         }
-        public UserNameValidation VerifyUserName(string username)
+        public void VerifyUserName(string username)
         {
             if (username == "")
-                return UserNameValidation.EmptyNameError;
+                throw new ArgumentNullException("Name cannot be empty!");
             else if (!Regex.IsMatch(username, @"^[A-Za-z ]+$"))
-                return UserNameValidation.NotOnlyLettersError;
-            return UserNameValidation.Success;
+                throw new InvalidDataException("Name cal only contain letters!");
         }
-        public enum ValidationResultUIV { Success, LetterAlreadyChosenError, OnlyLettersError, MoreThan1LetterError }
-        public enum UserNameValidation { Success, EmptyNameError, NotOnlyLettersError }
     }
 }

@@ -10,7 +10,6 @@ namespace GalgjeGame.Core
     public class PassedTimeCalculator
     {
         Stopwatch _stopwatch;
-        public int SecondsPassed { get; private set; }
         public PassedTimeCalculator()
         {
             _stopwatch = new Stopwatch();
@@ -19,10 +18,10 @@ namespace GalgjeGame.Core
         {
             _stopwatch.Start();
         }
-        public void StopTimer()
+        public int StopTimer()
         {
             _stopwatch.Stop();
-            SecondsPassed = _stopwatch.Elapsed.Seconds;
+            return _stopwatch.Elapsed.Seconds;
         }
         public void ResetTimer()
         {

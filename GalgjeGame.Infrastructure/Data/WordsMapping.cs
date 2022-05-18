@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using GalgjeGame.Core;
+using GalgjeGame.Core.Entities;
 
 namespace GalgjeGame.Infrastructure.Data
 {

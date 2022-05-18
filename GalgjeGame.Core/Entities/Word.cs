@@ -1,4 +1,4 @@
-﻿namespace GalgjeGame.Core
+﻿namespace GalgjeGame.Core.Entities
 {
     public class Word
     {
