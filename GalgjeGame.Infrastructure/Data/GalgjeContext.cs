@@ -1,4 +1,6 @@
-﻿using GalgjeGame.Core.Entities;
+﻿using GalgjeGame.Core;
+using GalgjeGame.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -14,7 +16,6 @@ public class GalgjeContext : DbContext
     public DbSet<Word> WordsToBeGuessed { get; set; }
     public DbSet<Game> Games { get; set; }
     public DbSet<Player> Players { get; set; }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)

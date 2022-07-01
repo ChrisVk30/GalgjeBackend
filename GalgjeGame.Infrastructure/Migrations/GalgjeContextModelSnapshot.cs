@@ -3,6 +3,8 @@ using System;
 using GalgjeGame.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
@@ -15,20 +17,31 @@ namespace GalgjeGame.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.4")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("GalgjeGame.Core.UserGameScore", b =>
+            modelBuilder.Entity("GalgjeGame.Core.Entities.Game", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("ID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("IncorrectGuesses")
+                    b.Property<long>("PlayerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("RightLetters")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecretWord")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<TimeSpan?>("TimeElapsed")
@@ -40,18 +53,18 @@ namespace GalgjeGame.Migrations
                     b.Property<DateTime?>("TimeStarted")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("WrongLetters")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("UserName");
+                    b.HasIndex("PlayerId");
 
-                    b.ToTable("UserGameScores");
+                    b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("GalgjeGame.Core.UserOverallScore", b =>
+            modelBuilder.Entity("GalgjeGame.Core.Entities.Player", b =>
                 {
                     b.Property<long>("PlayerId")
                         .ValueGeneratedOnAdd()
@@ -59,15 +72,16 @@ namespace GalgjeGame.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("PlayerId"), 1L, 1);
 
-                    b.Property<int>("WordsGuessed")
-                        .HasColumnType("int");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PlayerId");
 
-                    b.ToTable("UserOverallScores");
+                    b.ToTable("Players");
                 });
 
-            modelBuilder.Entity("GalgjeGame.Core.Word", b =>
+            modelBuilder.Entity("GalgjeGame.Core.Entities.Word", b =>
                 {
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(100)");
@@ -77,20 +91,20 @@ namespace GalgjeGame.Migrations
                     b.ToTable("WordsToBeGuessed", (string)null);
                 });
 
-            modelBuilder.Entity("GalgjeGame.Core.UserGameScore", b =>
+            modelBuilder.Entity("GalgjeGame.Core.Entities.Game", b =>
                 {
-                    b.HasOne("GalgjeGame.Core.UserOverallScore", "userOverallScore")
-                        .WithMany("userGameScores")
-                        .HasForeignKey("UserName")
+                    b.HasOne("GalgjeGame.Core.Entities.Player", "Player")
+                        .WithMany("Games")
+                        .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("userOverallScore");
+                    b.Navigation("Player");
                 });
 
-            modelBuilder.Entity("GalgjeGame.Core.UserOverallScore", b =>
+            modelBuilder.Entity("GalgjeGame.Core.Entities.Player", b =>
                 {
-                    b.Navigation("userGameScores");
+                    b.Navigation("Games");
                 });
 #pragma warning restore 612, 618
         }
