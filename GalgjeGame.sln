@@ -5,13 +5,13 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeGame.Core.Tests", "GalgjeGame.Core.Tests\GalgjeGame.Core.Tests.csproj", "{64E678EF-C719-48AD-B758-31DB695B7CBA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeGame", "GalgjeGame\GalgjeGame.csproj", "{0E563C56-5A58-471B-A1E6-8FA4A95BA3FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeGame.Core", "GalgjeGame.Core\GalgjeGame.Core.csproj", "{8213E28C-8966-4019-AB29-975FEEDDCA41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalgjeGame.Core", "GalgjeGame.Core\GalgjeGame.Core.csproj", "{8213E28C-8966-4019-AB29-975FEEDDCA41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeGame.Infrastructure", "GalgjeGame.Infrastructure\GalgjeGame.Infrastructure.csproj", "{20E0EBB3-FBE8-4BD8-87DA-E9B8E8507B2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalgjeGame.Infrastructure", "GalgjeGame.Infrastructure\GalgjeGame.Infrastructure.csproj", "{20E0EBB3-FBE8-4BD8-87DA-E9B8E8507B2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeGame.Infrastructure.Tests", "GalgjeGame.Infrastructure.Tests\GalgjeGame.Infrastructure.Tests.csproj", "{DF477AFC-B907-4D03-BE59-61DFC008358E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalgjeGame.Infrastructure.Tests", "GalgjeGame.Infrastructure.Tests\GalgjeGame.Infrastructure.Tests.csproj", "{DF477AFC-B907-4D03-BE59-61DFC008358E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GalgjeApp", "GalgjeApp\GalgjeApp.csproj", "{5FFFA25A-0D3E-472E-A75A-0F6B649765C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{64E678EF-C719-48AD-B758-31DB695B7CBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64E678EF-C719-48AD-B758-31DB695B7CBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64E678EF-C719-48AD-B758-31DB695B7CBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0E563C56-5A58-471B-A1E6-8FA4A95BA3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0E563C56-5A58-471B-A1E6-8FA4A95BA3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0E563C56-5A58-471B-A1E6-8FA4A95BA3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0E563C56-5A58-471B-A1E6-8FA4A95BA3FA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8213E28C-8966-4019-AB29-975FEEDDCA41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8213E28C-8966-4019-AB29-975FEEDDCA41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8213E28C-8966-4019-AB29-975FEEDDCA41}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{DF477AFC-B907-4D03-BE59-61DFC008358E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF477AFC-B907-4D03-BE59-61DFC008358E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF477AFC-B907-4D03-BE59-61DFC008358E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FFFA25A-0D3E-472E-A75A-0F6B649765C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FFFA25A-0D3E-472E-A75A-0F6B649765C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FFFA25A-0D3E-472E-A75A-0F6B649765C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FFFA25A-0D3E-472E-A75A-0F6B649765C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,23 @@
+﻿@page
+@using GalgjeApp.Pages
+@model GalgjeApp.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>This app has been set up to provide the user a nice experience to play hangman!</p>
+
+    <button><a class="nav-link text-dark" asp-area="" asp-page="PlayerLogin">Click here to play a game of Hangman!</a></button>
+
+    <br /><br /><br />
+
+    <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">Explanation</div>
+        <div class="card-body">
+            <h4 class="card-title">Never played before?</h4>
+            <p class="card-text">No idea how to play hangman? Click <a href="https://www.youtube.com/watch?time_continue=18&v=cGOeiQfjYPk&feature=emb_logo" target="_blank">this link</a> for a video explaining the basic concepts of the game!</p>
+        </div>
+    </div>
+</div>

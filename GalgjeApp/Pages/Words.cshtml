@@ -1,0 +1,30 @@
+﻿@page
+@model GalgjeApp.Pages.WordsModel
+@{
+}
+
+<h3 class="pageheader">All possible words: (Taken via httpClient request)</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Word</th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var word in Model.Words)
+{
+    <tr class="table-primary">
+        <td>@word.Value</td>
+    </tr>
+}
+  </tbody>
+</table>
+
+<form method="post" autocomplete="off">
+            <label for="input-word">Add new word:</label><br />
+            <input id="input-word" asp-for="Word.Value" type="text" minlength="4" maxlength="30" required>
+            <span asp-validation-for="Word.Value"></span>
+            <input type="submit" value="Submit">
+    @Html.AntiForgeryToken()
+</form>

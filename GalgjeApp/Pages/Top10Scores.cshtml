@@ -1,0 +1,27 @@
+﻿@page
+@model GalgjeApp.Pages.Top10ScoresModel
+@{
+    ViewData["Top Scores"] = "Top 10 Scores";
+}
+
+<h3 class="pageheader" >Leaderbord: </h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Username</th>
+      <th scope="col">Time</th>
+      <th scope="col">Characters of word guessed</th>
+    </tr>
+  </thead>
+  <tbody>
+@foreach (var score in Model.Scores)
+{
+    <tr class="table-primary">
+        <td>@score.UserName</td>
+        <td>@score.ConvertedTime</td>
+        <td>@score.WordLenght</td>
+    </tr>
+}
+  </tbody>
+</table>

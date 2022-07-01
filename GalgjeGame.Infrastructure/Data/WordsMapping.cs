@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using GalgjeGame.Core;
+using GalgjeGame.Core.Entities;
 
 namespace GalgjeGame.Infrastructure.Data
 {
@@ -12,7 +13,8 @@ namespace GalgjeGame.Infrastructure.Data
                 .ToTable("WordsToBeGuessed")
                 .HasKey("Value");
 
-            builder.Property(w => w.Value)
+            builder
+                .Property(w => w.Value)
                 .HasColumnType("nvarchar(100)");
         }
     }

@@ -1,0 +1,13 @@
+﻿@page
+@model GalgjeApp.Pages.PlayerLoginModel
+@{
+    ViewData["Login"] = "Login page";
+}
+
+<form method="post" autocomplete="on">
+            <label for="input-username">Username:</label><br />
+            <input id="input-username" asp-for="Player.UserName" type="text" required>
+            <span asp-validation-for="Player.UserName"></span>
+            <input type="submit" value="Submit">
+    @Html.AntiForgeryToken()
+</form>

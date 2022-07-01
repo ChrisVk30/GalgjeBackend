@@ -1,0 +1,39 @@
+﻿@page "{id?}"
+@model GalgjeApp.Pages.GameModel
+@using GalgjeGame.Core.Entities
+@{
+    ViewData["Game"] = "Game page";
+}
+<img id="hangmanimage" src="@Model.ImagePath" />
+
+<h1>@Model.Game.GuessedWord</h1>
+
+<h4>Letters already chosen: @Model.Game.ChosenLetters</h4>
+@if (Model.Game.Status == Game.GameStatus.InProgress)
+{
+    <form method="post" autocomplete="off">
+            <label for="input-letter">Choose a letter to guessed:</label><br />
+            <input id="input-letter" name="letter" type="text" maxlength="1" required><br /> 
+            <input type="submit" value="Guess!">
+    @Html.AntiForgeryToken()
+    </form>
+}
+else if (Model.Game.Status == Game.GameStatus.Won)
+{
+    <h3>You correctly guessed the word @Model.Game.GuessedWord!</h3>
+    <form autocomplete="off">
+        <input type="submit" value="Start new game" asp-page="PlayerLogin">
+        <input type="submit" value="Return to homepage" asp-page="Index">
+    @Html.AntiForgeryToken()
+    </form>
+}
+else
+{
+    <h3 id="loser"><span>You're a loser! The word you had to guess was: @Model.Game.SecretWord</span></h3><br />
+    <form autocomplete="off">
+        <input type="submit" value="Start new game" asp-page="PlayerLogin">
+        <input type="submit" value="Return to homepage" asp-page="Index">
+    @Html.AntiForgeryToken()
+    </form>
+}
+

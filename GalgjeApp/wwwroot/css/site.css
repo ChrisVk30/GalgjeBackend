@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+#loser:hover span {
+    color: red;
+    display: none;
+}
+
+#loser:hover:before {
+    background: green;
+    color: white;
+    padding: 5px;
+    content: "Why are you putting your mouse here? Don't be mad at me.. try harder next time!"
+}
+
+#hangmanimage {
+    height: 520px;
+    width: 460;
+}
+
+.pageheader {
+    padding-top: 15px;
+}
