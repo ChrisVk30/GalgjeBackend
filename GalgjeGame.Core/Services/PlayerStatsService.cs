@@ -9,8 +9,10 @@ namespace GalgjeGame.Core.Services
     {
         private readonly IPlayersRepository _playerRepository;
         private readonly IGameRepository _gameRepository;
-        public PlayerStatsService(IPlayersRepository playerStatsRepository, IGameRepository gameRepository)
+        private readonly EncryptService _encryptService;
+        public PlayerStatsService(IPlayersRepository playerStatsRepository, IGameRepository gameRepository, EncryptService encryptService)
         {
+            _encryptService = encryptService;
             _playerRepository = playerStatsRepository;
             _gameRepository = gameRepository;
         }
@@ -30,7 +32,7 @@ namespace GalgjeGame.Core.Services
                                                WordsGuessed = guessedWords
                                            } into scores
                                            orderby scores.Ratio descending, scores.WordsGuessed descending, scores.UserName ascending
-                                           select new PlayerStats() { UserName = scores.UserName, Ratio = scores.Ratio, GuessedWords = scores.WordsGuessed }
+                                           select new PlayerStats() { UserName = _encryptService.DecryptString(scores.UserName), Ratio = scores.Ratio, GuessedWords = scores.WordsGuessed }
                              ).Distinct().Take(10).ToList();
             return queryTop10OverallScores;
         }
@@ -49,7 +51,7 @@ namespace GalgjeGame.Core.Services
                                         WordLenght = a.SecretWord.Length
                                     } into scores
                                     orderby scores.Time ascending, scores.WordLenght descending
-                                    select new PlayerStats() { UserName = scores.UserName, TimeElapsed = scores.Time, WordLenght = scores.WordLenght }
+                                    select new PlayerStats() { UserName = _encryptService.DecryptString(scores.UserName), TimeElapsed = scores.Time, WordLenght = scores.WordLenght }
                                 ).Take(10).ToList();
 
             return queryTop10Scores;

@@ -19,6 +19,7 @@ builder.Services.AddTransient<IPlayerStatsService, PlayerStatsService>();
 builder.Services.AddTransient<IGameService, GameService>();
 builder.Services.AddTransient<IPlayerService, PlayerService>();
 builder.Services.AddTransient<IWordsService, WordsService>();
+builder.Services.AddTransient<EncryptService>();
 
 builder.Services.AddSwaggerGen(options =>
 {

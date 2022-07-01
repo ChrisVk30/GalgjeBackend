@@ -12,7 +12,7 @@
 @if (Model.Game.Status == Game.GameStatus.InProgress)
 {
     <form method="post" autocomplete="off">
-            <label for="input-letter">Choose a letter to guessed:</label><br />
+            <label for="input-letter">Choose a letter to guess:</label><br />
             <input id="input-letter" name="letter" type="text" maxlength="1" required><br /> 
             <input type="submit" value="Guess!">
     @Html.AntiForgeryToken()

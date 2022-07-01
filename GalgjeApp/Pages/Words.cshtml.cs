@@ -21,7 +21,7 @@ namespace GalgjeApp.Pages
         public List<Word> Words { get; set; }
         public async Task<IActionResult> OnGetAsync()
         {
-            Words = await httpClient.GetFromJsonAsync<List<Word>>("https://localhost:7044/api/words");
+            Words = await httpClient.GetFromJsonAsync<List<Word>>("https://localhost:52916/api/words");
      
             return Page();
         }
