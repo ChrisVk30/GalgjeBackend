@@ -5,21 +5,20 @@ namespace GalgjeGame.Core.Services
 {
     public class WordsService : IWordsService
     {
-        public IWordsRepository WordsRepository;
+        private readonly IWordsRepository WordsRepository;
         public WordsService(IWordsRepository wordsRepository)
         {
             WordsRepository = wordsRepository;
         }
-
-        public async Task<Word> AddNewWordIfNotExistsAsync(string word)
+        public async Task<Word> AddNewWordIfNotExistsAsync(string input)
         {
-            Word Word = new Word { Value = word };
-            var input = await WordsRepository.GetWordByNameAsync(Word);
-            if (input == null)
+            var word = new Word { Value = input };
+            var response = await WordsRepository.GetWordByNameAsync(word);
+            if (response == null)
             {
-                input = await WordsRepository.AddNewWordAsync(Word);
+                response = await WordsRepository.AddNewWordAsync(word);
             }
-            return input;
+            return response;
         }
     }
 }

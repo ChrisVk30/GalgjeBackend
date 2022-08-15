@@ -21,19 +21,19 @@ builder.Services.AddTransient<IPlayerService, PlayerService>();
 builder.Services.AddTransient<IWordsService, WordsService>();
 builder.Services.AddTransient<EncryptService>();
 
-builder.Services.AddSwaggerGen(options =>
-{
-	options.SwaggerDoc("v1", new OpenApiInfo
-	{
-		Title = "Nog steeds mijn beste API",
-		Version = "v1"
-	});
-});
+//builder.Services.AddSwaggerGen(options =>
+//{
+//	options.SwaggerDoc("v1", new OpenApiInfo
+//	{
+//		Title = "Nog steeds mijn beste API",
+//		Version = "v1"
+//	});
+//});
 
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-	options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
-});
+//builder.Services.AddControllers().AddNewtonsoftJson(options =>
+//{
+//	options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+//});
 
 builder.Services.AddRazorPages();
 

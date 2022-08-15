@@ -9,8 +9,7 @@ namespace GalgjeGame.Core.Entities
     public class PlayerStats
     {
         public long PlayerId { get; set; }
-        public string UserName
-        { get; set; }
+        public string UserName { get; set; }
         public int GuessedWords { get; set; }
         public double Ratio { get; set; }
         public TimeSpan? TimeElapsed { get; set; }

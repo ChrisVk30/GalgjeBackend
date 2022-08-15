@@ -12,6 +12,8 @@ namespace GalgjeGame.Infrastructure.Data
             builder.HasOne(g => g.Player)
                 .WithMany(p => p.Games)
                 .HasForeignKey(g => g.PlayerId);
+
+            builder.Ignore("IncorrectGuesses");
         }
     }
 }

@@ -7,8 +7,10 @@ namespace GalgjeApp.Pages
 {
     public class GameModel : PageModel
     {
-        public IGameRepository GameRepository { get; set; }
-        public IGameService GameService { get; set; }
+        private IGameRepository GameRepository { get; set; }
+        private IGameService GameService { get; set; }
+        [BindProperty]
+        public Guess Guess { get; set; }
         public Game Game { get; set; }
         public string ImagePath { get { return @$"/Images/hangman_phase{Game.IncorrectGuesses}.jpg"; } }
         public GameModel(IGameRepository gameRepository, IGameService gameService)
@@ -28,7 +30,11 @@ namespace GalgjeApp.Pages
         }
         public async Task<IActionResult> OnPost(long Id)
         {
-            var letter = char.Parse(Request.Form["letter"]);
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            var letter = Guess.Letter;
             Game = await GameService.UpdateGameAsync(Id, letter);
             return Page();
         }

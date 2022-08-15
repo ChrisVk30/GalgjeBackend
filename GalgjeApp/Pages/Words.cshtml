@@ -5,6 +5,14 @@
 
 <h3 class="pageheader">All possible words: (Taken via httpClient request)</h3>
 
+<form method="post" autocomplete="off">
+            <label for="input-word">Add new word:</label><br />
+            <input id="input-word" asp-for="Word.Value" type="text" minlength="4" maxlength="30" required>
+            <span asp-validation-for="Word.Value"></span>
+            <input type="submit" value="Submit">
+    @Html.AntiForgeryToken()
+</form>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -21,10 +29,4 @@
   </tbody>
 </table>
 
-<form method="post" autocomplete="off">
-            <label for="input-word">Add new word:</label><br />
-            <input id="input-word" asp-for="Word.Value" type="text" minlength="4" maxlength="30" required>
-            <span asp-validation-for="Word.Value"></span>
-            <input type="submit" value="Submit">
-    @Html.AntiForgeryToken()
-</form>
+

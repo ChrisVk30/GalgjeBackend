@@ -37,7 +37,6 @@ namespace GalgjeGame.Core.Services
                 }
             }
         }
-
         public string DecryptString(string cipherText)
         {
             var fullCipher = Convert.FromBase64String(cipherText);

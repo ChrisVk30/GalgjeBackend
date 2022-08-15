@@ -16,9 +16,10 @@ namespace GalgjeApp.Pages
         {
             StatsService = playerStatsService;
         }
-        public async void OnGetAsync()
+        public async Task<IActionResult> OnGetAsync()
         {
             Scores = await StatsService.GetTop10Players();
+            return Page();
         }
     }
 }
