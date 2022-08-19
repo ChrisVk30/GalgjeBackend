@@ -21,5 +21,10 @@ namespace GalgjeGame.Core.Services
             }
             return input;
         }
+
+        public async Task<IEnumerable<Word>> GetAllWordsAsync()
+        {
+            return await WordsRepository.GetAllAsync();
+        }
     }
 }

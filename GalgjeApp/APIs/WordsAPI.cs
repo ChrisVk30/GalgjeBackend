@@ -1,5 +1,6 @@
 ﻿using GalgjeGame.Core.Entities;
 using GalgjeGame.Core.Interfaces;
+using GalgjeGame.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GalgjeApp.APIs
@@ -9,16 +10,23 @@ namespace GalgjeApp.APIs
 	[ApiController]
 	public class WordsAPI : ControllerBase
 	{
-		private IWordsRepository _repository;
-		public WordsAPI(IWordsRepository televisionRepository)
+		private IWordsService _wordsService;
+		public WordsAPI(IWordsService wordsService)
 		{
-			_repository = televisionRepository;
+            _wordsService = wordsService;
 		}
 
 		[HttpGet]
 		public async Task<IEnumerable<Word>> GetAll()
 		{
-			return await _repository.GetAllAsync();
+			return await _wordsService.GetAllWordsAsync();
 		}
-	}
+
+		[HttpPost]
+		public async Task<ActionResult<Word>> AddWord(Word word) 
+		{ 
+			return await _wordsService.AddNewWordIfNotExistsAsync(word.Value);
+		}
+
+    }
 }

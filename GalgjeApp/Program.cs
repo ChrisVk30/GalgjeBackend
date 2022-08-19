@@ -1,4 +1,4 @@
-using GalgjeGame.Core.Interfaces;
+﻿using GalgjeGame.Core.Interfaces;
 using GalgjeGame.Core.Services;
 using GalgjeGame.Infrastructure.Data;
 using GalgjeGame.Infrastructure.Repositories;
@@ -21,25 +21,31 @@ builder.Services.AddTransient<IPlayerService, PlayerService>();
 builder.Services.AddTransient<IWordsService, WordsService>();
 builder.Services.AddTransient<EncryptService>();
 
-builder.Services.AddSwaggerGen(options =>
-{
-	options.SwaggerDoc("v1", new OpenApiInfo
-	{
-		Title = "Nog steeds mijn beste API",
-		Version = "v1"
-	});
-});
+builder.Services.AddControllers();
 
-builder.Services.AddControllers().AddNewtonsoftJson(options =>
-{
-	options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
-});
+builder.Services.AddCors(options => { options.AddPolicy("frontend", policy => {policy.WithOrigins("http://localhost:5174").AllowAnyMethod().AllowAnyHeader().AllowCredentials(); }); });
+
+//builder.Services.AddSwaggerGen(options =>
+//{
+//	options.SwaggerDoc("v1", new OpenApiInfo
+//	{
+//		Title = "Nog steeds mijn beste API",
+//		Version = "v1"
+//	});
+//});
+
+//builder.Services.AddControllers().AddNewtonsoftJson(options =>
+//{
+//	options.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+//});
 
 builder.Services.AddRazorPages();
 
 builder.Services.AddMemoryCache();
 
 var app = builder.Build();
+
+app.UseCors("frontend");
 
 app.UseDeveloperExceptionPage();
 

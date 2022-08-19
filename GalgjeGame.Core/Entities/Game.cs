@@ -55,7 +55,6 @@ namespace GalgjeGame.Core.Entities
                 return sb.ToString();
             }
         }
-
         public void GuessLetter(char letter)
         {
             if (SecretWord.Contains(letter) && !RightLetters.Contains(letter))
@@ -67,15 +66,14 @@ namespace GalgjeGame.Core.Entities
                 WrongLetters += letter;
             }
         }
-
-        public void CheckGameStatus()
+        public void UpdateGameStatus()
         {
             if (SecretWord == GuessedWord)
             {
                 Status = GameStatus.Won;
                 TimeFinished = DateTime.Now;
                 TimeElapsed = TimeFinished - TimeStarted;
-            }   
+            }
             else if (IncorrectGuesses == 7)
             {
                 Status = GameStatus.Lost;

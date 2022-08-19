@@ -30,7 +30,7 @@ namespace GalgjeGame.Core.Services
         {
             Game game = await gameRepository.GetGameByIdAsync(gameId);
             game.GuessLetter(letter);
-            game.CheckGameStatus();
+            game.UpdateGameStatus();
             return await gameRepository.UpdateGameAsync(game);
         }
     }

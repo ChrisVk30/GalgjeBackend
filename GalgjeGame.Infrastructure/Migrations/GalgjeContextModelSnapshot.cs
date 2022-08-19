@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GalgjeGame.Migrations
+namespace GalgjeGame.Infrastructure.Migrations
 {
     [DbContext(typeof(GalgjeContext))]
     partial class GalgjeContextModelSnapshot : ModelSnapshot

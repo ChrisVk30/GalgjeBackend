@@ -6,15 +6,15 @@ namespace GalgjeGame.Core.Services
     public class PlayerService : IPlayerService
     {
         private readonly IPlayersRepository _repository;
-        private readonly EncryptService _encryptService;
+        //private readonly EncryptService _encryptService;
         public PlayerService(IPlayersRepository playersRepository, EncryptService encryptService)
         {
             _repository = playersRepository;
-            _encryptService = encryptService;
+            //_encryptService = encryptService;
         }
         public async Task<Player> FindPlayer(string username)
         {
-            username = _encryptService.EncryptString(username);
+            //username = _encryptService.EncryptString(username);
             var user = await _repository.GetPlayerByName(username);
             if (user == null)
             {
@@ -24,7 +24,8 @@ namespace GalgjeGame.Core.Services
             }
             else
             {
-                user.UserName = _encryptService.DecryptString(user.UserName);
+                //user.UserName = _encryptService.DecryptString(user.UserName);
+                user.UserName = username;
             }
             return user;
         }
