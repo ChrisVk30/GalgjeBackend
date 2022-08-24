@@ -16,19 +16,19 @@ namespace GalgjeGame.Infrastructure.Repositories
 
         public async Task<Game> AddGameAsync(Game game)
         {
-            await _context.Games.AddAsync(game);
+            _context.Games.Add(game);
             await _context.SaveChangesAsync();
             return game;
         }
 
         public async Task<Game> GetGameByIdAsync(long id)
         {
-            return await _context.Games.FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Games.SingleOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IQueryable<Game>> GetAllGamesAsync()
         {
-            return _context.Games.AsQueryable(); 
+            return _context.Games.AsQueryable();
         }
 
         public async Task<Game> UpdateGameAsync(Game game)

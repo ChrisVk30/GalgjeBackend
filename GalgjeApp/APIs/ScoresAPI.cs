@@ -14,13 +14,13 @@ namespace GalgjeApp.APIs
             _statsService = playerStatsService;
         }
 
-        [Route("~/api/scores/top10players")]
+        [Route("top10players")]
         public async Task<IEnumerable<PlayerStats>> GetTopPlayers()
         {
             return await _statsService.GetTop10Players();
         }
-        
-        [Route("~/api/scores/top10scores")]
+
+        [Route("top10scores")]
         public async Task<IEnumerable<PlayerStats>> GetTopScores()
         {
             return await _statsService.GetTop10Scores();

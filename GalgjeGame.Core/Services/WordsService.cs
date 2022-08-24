@@ -13,7 +13,7 @@ namespace GalgjeGame.Core.Services
 
         public async Task<Word> AddNewWordIfNotExistsAsync(string word)
         {
-            Word Word = new Word { Value = word };
+            Word Word = new Word { Value = word.ToLower() };
             var input = await WordsRepository.GetWordByNameAsync(Word);
             if (input == null)
             {

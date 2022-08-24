@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GalgjeApp.APIs
 {
-    [Route("api/guess/{id}")]
+    [Route("api/game/{id}/guess")]
     [ApiController]
     public class GuessAPI
     { 
@@ -17,7 +17,6 @@ namespace GalgjeApp.APIs
         }
 
         [HttpPost]
-        [Route("~/api/guess/{id}/guessletter")]
         public async Task<ActionResult<Game>> GuessLetter(Guess guess, long id)
         {
             return await _gameService.UpdateGameAsync(id, guess.Letter);

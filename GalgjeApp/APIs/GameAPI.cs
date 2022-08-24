@@ -10,7 +10,6 @@ namespace GalgjeApp.APIs
     [ApiController]
     public class GameAPI : ControllerBase
     {
-        private Player _player { get; set; }
         public IPlayerService PlayerService { get; set; }
         public IGameService GameService { get; set; }
         public GameAPI(IPlayerService playerService, IGameService gameService)
@@ -20,11 +19,10 @@ namespace GalgjeApp.APIs
         }
 
         [HttpPost]
-        [Route("~/api/game/creategame")]
         public async Task<ActionResult<Game>> CreateNewGame(PlayerObj playerObj)
         {
-            _player = await PlayerService.FindPlayer(playerObj.Username);
-            return await GameService.CreateGameAsync(_player);
+            var player = await PlayerService.FindPlayer(playerObj.Username);
+            return await GameService.CreateGameAsync(player);
         }
 
         [HttpGet]

@@ -26,9 +26,9 @@ namespace GalgjeGame.Core.Services
             game.TimeStarted = DateTime.Now;
             return await gameRepository.AddGameAsync(game);
         }
-        public async Task<Game> UpdateGameAsync(long gameId, char letter)
+        public async Task<Game> UpdateGameAsync(long id, char letter)
         {
-            Game game = await gameRepository.GetGameByIdAsync(gameId);
+            Game game = await gameRepository.GetGameByIdAsync(id);
             game.GuessLetter(letter);
             game.UpdateGameStatus();
             return await gameRepository.UpdateGameAsync(game);

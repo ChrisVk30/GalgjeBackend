@@ -38,7 +38,7 @@ namespace GalgjeGame.Infrastructure.Repositories
         }
         public async Task<Word> AddNewWordAsync(Word word)
         {
-            await _context.WordsToBeGuessed.AddAsync(word);
+            _context.WordsToBeGuessed.Add(word);
             await _context.SaveChangesAsync();
             return word;
         }

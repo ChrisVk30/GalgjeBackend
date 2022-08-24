@@ -23,7 +23,7 @@ builder.Services.AddTransient<EncryptService>();
 
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options => { options.AddPolicy("frontend", policy => {policy.WithOrigins("http://localhost:5174").AllowAnyMethod().AllowAnyHeader().AllowCredentials(); }); });
+builder.Services.AddCors(options => { options.AddPolicy("frontend", policy => {policy.WithOrigins("http://localhost:5173").AllowAnyMethod().AllowAnyHeader().AllowCredentials(); }); });
 
 //builder.Services.AddSwaggerGen(options =>
 //{

@@ -9,6 +9,25 @@ namespace GalgjeGame.Infrastructure.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            var sp = @"CREATE   PROCEDURE [dbo].[SPC_GetWordToGuess] 
+                     -- Add the parameters for the stored procedure here
+                     @Value NVARCHAR(100) OUTPUT
+                    AS
+                    BEGIN
+                     -- SET NOCOUNT ON added to prevent extra result sets from
+                     -- interfering with SELECT statements.
+                     SET NOCOUNT ON;
+
+                    -- Insert statements for procedure here
+                     SET @Value = (SELECT TOP 1 Value FROM WordsToBeGuessed
+                     ORDER BY NEWID())
+
+                     SELECT @Value AS Value;
+                    END
+                    GO";
+
+            migrationBuilder.Sql(sp);
+
             migrationBuilder.CreateTable(
                 name: "Players",
                 columns: table => new
